@@ -1,0 +1,82 @@
+.Search {
+    position:fixed;
+    z-index: 100;
+    background-color: white;
+    width: 50%;
+    padding: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    display:inline-block;
+    top:25%;
+    left:25%;
+    color: #8a8e91;
+}
+
+.innerSearch {
+    margin: 10%;
+}
+
+.innerSearch input {
+    width:75%;
+    font-size: 28px;
+    text-align: center;
+    border:none;
+    outline:none;
+}
+
+
+
+.SearchByCity{
+    width:75%;
+    margin:0 auto;
+    padding:0;
+    display:inline-block;
+    border-bottom: 0.5px solid #8a8e91;
+}
+
+.SearchByCity input {
+    margin-bottom: 1px;
+    display:inline-block;
+}
+
+input:-webkit-autofill, select:-webkit-autofill, {
+    background-color: #ffffff !important;
+}
+
+.SearchByCity button{
+    background-color: #ffffff;
+    border:none;
+    outline:none;
+    cursor: pointer;
+    float:right;
+    height:30px;
+}
+
+.SearchByCity button .material-icons{
+    font-size:30px;
+}
+
+.currentLocButton {
+    color:inherit;
+    padding:0;
+    text-decoration: underline;
+    background-color: #ffffff;
+    border:none;
+    outline:none;
+    font-size: inherit;
+    cursor: pointer;
+    padding:0
+}
+
+
+@media only screen and (max-width: 1280px) { 
+    .Search { width:55%; top:25%;}
+}
+
+@media only screen and (max-width: 980px) {
+    .Search { width:75%; left: 13%;}
+}
+
+@media only screen and (max-width: 640px) { 
+    .SearchByCity {width: 100%}
+}
