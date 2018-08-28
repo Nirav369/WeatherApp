@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 // actions to dispatch
-import { startSearch, convertCel } from '../../store/search/actions'
+import { startSearch, convertCel, startSearchByCoord} from '../../store/search/actions'
 import '../../App.css';
 
 import Search from '../search/search'
@@ -35,7 +35,9 @@ class App extends Component {
       showWeatherSt: false,
       isFaranight: true,
       cityName: "",
-      WeatherIcon: ""
+      WeatherIcon: "",
+      Longitude:"",
+      Latitude:""
     };
   }
 
@@ -53,21 +55,20 @@ class App extends Component {
         cityWeather: weatherData.list.cityWeather,
         descriptionWeather: weatherData.list.descriptionWeather,
         currentDateTime: weatherData.list.currentDateTime,
-        MorningTemp: weatherData.list.MorningTemp,
-        DayTemp: weatherData.list.DayTemp,
-        EveningTemp: weatherData.list.EveningTemp,
-        NightTemp: weatherData.list.NightTemp,
-        WeatherIcon: weatherData.list.WeatherIcon,
-        WeatherIcon1: weatherData.list.WeatherIcon1,
-        WeatherIcon2: weatherData.list.WeatherIcon2,
-        WeatherIcon3: weatherData.list.WeatherIcon3,
-        WeatherIcon4: weatherData.list.WeatherIcon4,
-        WeatherIcon5: weatherData.list.WeatherIcon5
+        morningTemp: weatherData.list.morningTemp,
+        dayTemp: weatherData.list.dayTemp,
+        eveningTemp: weatherData.list.eveningTemp,
+        nightTemp: weatherData.list.nightTemp,
+        weatherIcon: weatherData.list.weatherIcon,
+        weatherIcon1: weatherData.list.weatherIcon1,
+        weatherIcon2: weatherData.list.weatherIcon2,
+        weatherIcon3: weatherData.list.weatherIcon3,
+        weatherIcon4: weatherData.list.weatherIcon4,
+        weatherIcon5: weatherData.list.weatherIcon5
       })
-    }
-    }
+    }}
 
-  getweather = async (event) => {
+  getWeather = async (event) => {
     event.preventDefault();
     const cityName = event.target.city.value;
     this.setState({cityName:cityName})
@@ -84,6 +85,9 @@ class App extends Component {
    if(this.state.isFaranight){
     this.props.dispatch(convertCel(this.state)); 
     var isFaranight = false 
+   } else if (this.state.Latitude !== "" && this.state.Longitude !== ""){
+    this.props.dispatch(startSearchByCoord({'lat':this.state.Latitude, 'long':this.state.Longitude}));
+    var isFaranight = true
    } else {
     this.props.dispatch(startSearch(this.state.cityName));
     var isFaranight = true
@@ -94,15 +98,24 @@ class App extends Component {
 }
 
   currLocClicked = () => {
+    var that = this;
   navigator.geolocation.getCurrentPosition(function(args){
-  console.log(args)
-    })
+    that.getWeatherFromCoords(args);
+  })
+  }
+
+  getWeatherFromCoords = (args) => {
+      this.props.dispatch(startSearchByCoord({'lat':args.coords.latitude, 'long':args.coords.longitude}));
+      this.setState({
+        Latitude: args.coords.latitude,
+        Longitude: args.coords.longitude
+      })
   }
 
   render() {
     return (
       <div className="App">
-        <Search clicked={this.getweather} CurrLocClicked={this.currLocClicked} />
+        <Search clicked={this.getWeather} currLocClicked={this.currLocClicked} />
         {this.state.showWeatherSt ?
           <Weather 
             day1Temp={this.state.temp1}
@@ -114,18 +127,18 @@ class App extends Component {
             description={this.state.descriptionWeather}
             currentTemp={this.state.currentTemp}
             currentDateTime={this.state.currentDateTime}
-            MorningTemp={this.state.MorningTemp}
-            DayTemp={this.state.DayTemp}
-            EveningTemp={this.state.EveningTemp}
-            NightTemp={this.state.NightTemp}
+            morningTemp={this.state.morningTemp}
+            dayTemp={this.state.dayTemp}
+            eveningTemp={this.state.eveningTemp}
+            nightTemp={this.state.nightTemp}
             back={this.goBackHandler}
             switchTempHandler = {this.switchTempHandler}
-            WeatherIcon = {this.state.WeatherIcon}
-            WeatherIcon1 = {this.state.WeatherIcon1}
-            WeatherIcon2 = {this.state.WeatherIcon2}
-            WeatherIcon3 = {this.state.WeatherIcon3}
-            WeatherIcon4 = {this.state.WeatherIcon4}
-            WeatherIcon5 = {this.state.WeatherIcon5}
+            weatherIcon = {this.state.weatherIcon}
+            weatherIcon1 = {this.state.weatherIcon1}
+            weatherIcon2 = {this.state.weatherIcon2}
+            weatherIcon3 = {this.state.weatherIcon3}
+            weatherIcon4 = {this.state.weatherIcon4}
+            weatherIcon5 = {this.state.weatherIcon5}
           /> : null}
       </div>
     );

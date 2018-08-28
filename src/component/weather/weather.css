@@ -37,7 +37,7 @@
     color:#fe7c6c;
 }
 
-.CurrentWeather {
+.currentWeather {
     overflow: auto;
     width:50%;
     flex:1;
@@ -91,21 +91,21 @@
     font-weight: 300;
 }
 
-.WeatherTop {
+.weatherTop {
     Width:100%;
     overflow: auto;
     display:inline-block;
 }
 
-.WeatherTop p{
+.weatherTop p{
     text-transform: capitalize;
 }
 
-.BackButoon {
+.backButoon {
     display:inline-block;
 }
 
-.BackButoon button {
+.backButoon button {
     background-color: #ffffff;
     border:none;
     outline:none;
@@ -114,17 +114,17 @@
     padding:0
 }
 
-.BackButoon button .material-icons {
+.backButoon button .material-icons {
     font-weight: 400;
     color:#8a8e91;
 }
-.CitynameTitle {
+.cityNameTitle {
     width:50%;
     display:inline-block;
     margin-left: 5px;
 }
 
-.F2CSwitch {
+.f2CSwitch {
     float: right;
     margin: 10px 0;
 }
@@ -176,55 +176,55 @@
 	margin-left: 58px;
 	box-shadow: none;
 }
-input.toggle-round-flat + label {
+input.toggleRoundFlat + label {
 	background-color: #fe7c6c;
 }
-input.toggle-round-flat + label:before, input.toggle-round-flat + label:after {
+input.toggleRoundFlat + label:before, input.toggleRoundFlat + label:after {
 	top: 2px;
 	bottom: 2px;
 	left: 2px;
 	box-shadow: none;
 	color: #8a8e91;
 }
-input.toggle-round-flat + label:before {
+input.toggleRoundFlat + label:before {
 	right: 2px;
 	background-color: #FFF;
 }
-input.toggle-round-flat + label:after {
+input.toggleRoundFlat + label:after {
 	width: 18px;
 	background-color: #fe7c6c;
 	border: none;
 	margin: 2px;
 }
-input.toggle-round-flat:checked + label {
+input.toggleRoundFlat:checked + label {
 	background-color: #fe7c6c;
 }
-input.toggle-round-flat:checked + label:before {
+input.toggleRoundFlat:checked + label:before {
 	background-color: #ffffff;
 }
-input.toggle-round-flat:checked + label:after {
+input.toggleRoundFlat:checked + label:after {
 	margin-left: 58px;
 	background-color: #fe7c6c;
 }
 
- .CurrentWeatherHeading {
+ .currentWeatherHeading {
     width:50%;
     display: inline-block;
     text-align: center;
 }
 
-CurrentWeatherHeading h1 { 
+currentWeatherHeading h1 { 
     float:left;
 }
 
- .CurrentWeatherIcon {
+ .currentweatherIcon {
     
     width: 50%;
     display: inline-block;
     text-align:center;
 }
 
-.CurrentWeatherIcon img {
+.currentweatherIcon img {
     
     width:2.5em;
 }
@@ -236,7 +236,7 @@ CurrentWeatherHeading h1 {
 
 @media only screen and (max-width: 980px) {
     .Weather { width:75%; left: 13%;}
-     .CurrentWeatherHeading, .CurrentWeatherIcon {width:100%; clear:both;}
+     .currentWeatherHeading, .currentweatherIcon {width:100%; clear:both;}
 }
 
 @media only screen and (max-width: 640px) { 
@@ -252,5 +252,5 @@ CurrentWeatherHeading h1 {
     .wholeWeek { margin:0; }
     .wholeWeek ul li { text-align: center; margin: 5px;}
     .todayWeather {display:block;}
-    .CurrentWeather {float:left;}
+    .currentWeather {float:left;}
 }

@@ -21,6 +21,20 @@ export function startSearch(cityName) {
     };
 }
 
+
+export function startSearchByCoord(cityName) {
+    return (dispatch) => {
+        var test = `${API}?lat=${cityName.lat}&lon=${cityName.long}&units=imperial&APPID=${API_KEY}`
+        return fetch(test)
+            .then()
+            .then(res => res.json())
+            .then(json => {
+                dispatch(SearchSuccess(json));
+                return json.data;
+            })
+            .catch(error => dispatch(SearchFailure(error)));
+    };
+}
 export function convertCel(data) {
     return {
         type: TEMP_TYPE_CHANGE,
