@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 // actions to dispatch
 import { startSearch, convertCel, startSearchByCoord} from '../../store/search/actions'
-import '../../App.css';
+import '../../App.scss';
 
 import Search from '../search/search'
 import Weather from '../weather/weather'
@@ -66,11 +66,15 @@ class App extends Component {
         weatherIcon4: weatherData.list.weatherIcon4,
         weatherIcon5: weatherData.list.weatherIcon5
       })
-    }}
+    }
+    else if(weatherData.list === ""){
+      alert("Please input a valid City !");   
+    }
+  }
 
   getWeather = async (event) => {
     event.preventDefault();
-    const cityName = event.target.city.value;
+    let cityName = event.target.city.value;
     this.setState({cityName:cityName})
     if (cityName !== "") {
       this.props.dispatch(startSearch(cityName));
@@ -78,7 +82,31 @@ class App extends Component {
   }
 
   goBackHandler = () => {
-    this.setState({ showWeatherSt: false })
+    this.setState({ cityWeather: "",
+    currentTemp: "",
+    currentDateTime: "",
+    MorningTemp: "",
+    DayTemp: "",
+    EveningTemp: "",
+    NightTemp: "",
+    temp1: "",
+    temp2: "",
+    temp3: "",
+    temp4: "",
+    temp5: "",
+    Day1: "",
+    Day2: "",
+    Day3: "",
+    Day4: "",
+    Day5: "",
+    descriptionWeather: "",
+    showWeatherSt: false,
+    isFaranight: true,
+    cityName: "",
+    WeatherIcon: "",
+    Longitude:"",
+    Latitude:"" })
+
   }
 
   switchTempHandler = (e) => {

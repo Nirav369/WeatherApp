@@ -4,7 +4,7 @@ import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store'
 
-import './index.css';
+import './index.scss';
 import App from '../src/component/container/index';
 import registerServiceWorker from './registerServiceWorker';
 

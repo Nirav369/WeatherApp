@@ -36,7 +36,8 @@
 
 .searchByCity input {
     margin-bottom: 1px;
-    display:inline-block;
+    width:85%;
+    float:left;
 }
 
 .searchByCity button{
@@ -44,9 +45,17 @@
     border:none;
     outline:none;
     cursor: pointer;
-    float:right;
     height:30px;
+    width:15%;
+    float:left;
 }
+
+.searchByCity button i {
+    transition: all 0.3s ease-out;
+}
+.searchByCity button:hover i {
+    color:#fe7c6c
+ }
 
 .searchByCity button .material-icons{
     font-size:30px;
@@ -76,3 +85,7 @@
 @media only screen and (max-width: 640px) { 
     .searchByCity {width: 100%}
 }
+
+@media only screen and (max-width: 360px) {
+    .search { width: 85%; left: 6.5%; padding:0;}
+} 

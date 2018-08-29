@@ -20,7 +20,7 @@
 
 .innerWeather h1{
     font-weight: 400;
-    margin:10px 0;
+    margin:0;
     font-size:52px;
 }
 
@@ -33,23 +33,21 @@
 
 .todayWeather {
     width:100%;
-    display: flex;
+    overflow: auto;
     color:#fe7c6c;
 }
 
 .currentWeather {
     overflow: auto;
-    width:50%;
-    flex:1;
+    width:60%;
     font-size: 2em;
-
+    float:left;
 }
 
 .wholeDay {
     overflow: auto;
-    width:50%;
-    flex:1;
-    display: inline-block;
+    width:40%;
+    float:left;
 }
 
 
@@ -62,6 +60,7 @@
 
 .wholeDay ul {
     padding:0;
+    margin:0;
 }
 
 .wholeDay ul li{
@@ -70,6 +69,11 @@
     width:50%;
     font-weight: 300;
 }
+
+.wholeDay ul li:first-child{
+    margin-top: 0;
+}
+
 .wholeDay ul li span{
     float:right;
 }
@@ -77,12 +81,14 @@
  padding:0;
  margin: 0;
  width:100%;
+ overflow: auto;
 }
 
 .wholeWeek ul li{
     list-style: none;
     float: left;
-    margin: 0 10px;
+    margin: 0;
+    width:20%;
     
 }
 
@@ -117,6 +123,7 @@
 .backButoon button .material-icons {
     font-weight: 400;
     color:#8a8e91;
+    font-size: 2em;
 }
 .cityNameTitle {
     width:50%;
@@ -208,20 +215,17 @@ input.toggleRoundFlat:checked + label:after {
 }
 
  .currentWeatherHeading {
-    width:50%;
-    display: inline-block;
     text-align: center;
+    float:left;
 }
 
-currentWeatherHeading h1 { 
+.currentWeatherHeading h1 { 
     float:left;
 }
 
  .currentweatherIcon {
-    
-    width: 50%;
-    display: inline-block;
     text-align:center;
+    float:left;
 }
 
 .currentweatherIcon img {
@@ -236,21 +240,30 @@ currentWeatherHeading h1 {
 
 @media only screen and (max-width: 980px) {
     .Weather { width:75%; left: 13%;}
-     .currentWeatherHeading, .currentweatherIcon {width:100%; clear:both;}
+    .wholeDay ul li {width:75%;}
 }
 
 @media only screen and (max-width: 640px) { 
     .wholeDay ul li {width:100%;}
     .Weather { top:5%; }
-    .innerWeather h1 { font-size: 32px; margin:0;}
+    .wholeWeek ul li {width:33%;}
     
 }
 
 @media only screen and (max-width: 480px) { 
+    .Weather {padding:10px;}
     .innerWeather p { font-size: 16px;}
-    .innerWeather h1 {font-size: 24px;}
+    .innerWeather h1, .backButoon button .material-icons {font-size: 36px;}
     .wholeWeek { margin:0; }
-    .wholeWeek ul li { text-align: center; margin: 5px;}
     .todayWeather {display:block;}
-    .currentWeather {float:left;}
+    .currentWeather, .wholeDay {float:left; width:100%}
+    .currentWeatherHeading h1 { font-size: 1.5em;}
+    .toggle + label { width:60px;}
+    input.toggleRoundFlat:checked + label:after {margin-left:40px;}
+    .toggle + label:after {text-indent: 45px;}
 }
+
+@media only screen and (max-width: 360px) {
+    .Weather { width: 85%; left: 6.5%; padding:0;}
+    .wholeWeek ul li{ margin:3px;}
+} 

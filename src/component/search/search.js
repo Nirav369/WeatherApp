@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './search.css';
+import './search.scss';
 
 class Search extends Component {
   render(){
@@ -8,7 +8,7 @@ class Search extends Component {
         <div className="innerSearch" >
             <form onSubmit={this.props.clicked}>
               <div className="searchByCity">
-                <input name ="city" type="text" placeholder="City"/>
+                <input name ="city" type="text" placeholder="City" required/>
                 <button ><i class="material-icons">search</i></button>
               </div>
             </form>
